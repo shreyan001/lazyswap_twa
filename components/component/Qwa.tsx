@@ -9,6 +9,7 @@ import { SwapSDK } from "@chainflip/sdk/swap";
 import { useSearchParams } from "next/navigation";
 import { generateQRCodeURI } from "@/lib/qrdata";
 
+
 const swapSDK = new SwapSDK({
   network: "perseverance",
   broker: {

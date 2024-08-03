@@ -1,12 +1,12 @@
 'use client'
-import Image from "next/image";
 import { Qwa } from "@/components/component/Qwa";
-import { useParams } from "next/navigation";
+import Loader from "@/components/component/loader"; 
+import { Suspense } from "react";
 
 
 export default function Home() {
 
-  const {channelId} = useParams()
 
-  return <Qwa />;
+  return <div className="min-h-screen flex items-center justify-center">    <Suspense fallback={<Loader />}>
+<Qwa /></Suspense></div>;
 }
