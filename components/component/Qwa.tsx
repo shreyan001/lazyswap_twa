@@ -9,7 +9,6 @@ import { SwapSDK } from "@chainflip/sdk/swap";
 import { useSearchParams } from "next/navigation";
 import { generateQRCodeURI } from "@/lib/qrdata";
 import WebApp from "@twa-dev/sdk";
- 
 
 
 const swapSDK = new SwapSDK({
@@ -74,7 +73,7 @@ export function Qwa() {
         is_visible: true,
       });
       WebApp.MainButton.onClick(() => {
-        window.Telegram.WebApp.close();
+        WebApp.close();
       });
       getSwapDetails(channelId).then((data) => {
         setState(data.state);
