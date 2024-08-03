@@ -8,6 +8,8 @@ import { useQRCode } from "next-qrcode";
 import { SwapSDK } from "@chainflip/sdk/swap";
 import { useSearchParams } from "next/navigation";
 import { generateQRCodeURI } from "@/lib/qrdata";
+import WebApp from "@twa-dev/sdk";
+ 
 
 
 const swapSDK = new SwapSDK({
@@ -61,6 +63,19 @@ export function Qwa() {
 
   useEffect(() => {
     if (channelId) {
+       
+      WebApp.MainButton.setText('Close');
+      WebApp.MainButton.show();
+      WebApp.MainButton.enable();
+      WebApp.MainButton.setParams({
+        color: '#333333', // A shade of black
+        text_color: '#FFFFFF', // White text
+        is_active: true,
+        is_visible: true,
+      });
+      WebApp.MainButton.onClick(() => {
+        window.Telegram.WebApp.close();
+      });
       getSwapDetails(channelId).then((data) => {
         setState(data.state);
         setDepositAddress(shortenAddress(data.depositAddress));
@@ -111,7 +126,7 @@ export function Qwa() {
           <div>{expectedDepositAmount} {srcAsset}</div>
           <div className="text-[#999]">Status</div>
           <div>{state}</div>
-          <div className="text-[#999]">Deposit Address</div>
+          <div className="text-[#999] flex flex-start items-center">Deposit Address</div>
           <div className="flex items-center justify-between">
             <div>{depositAddress}</div>
             <Button
@@ -129,7 +144,7 @@ export function Qwa() {
           <div>{srcAsset}</div>
           <div className="text-[#999]">Source Chain</div>
           <div>{srcChain}</div>
-          <div className="text-[#999]">Destination Address</div>
+          <div className="text-[#999] flex flex-start items-center">Destination Address</div>
           <div className="flex items-center justify-between">
             <div>{destAddress}</div>
             <Button
@@ -156,15 +171,6 @@ export function Qwa() {
   }}
 />
 
-      </div>
-      <div className="mt-4 flex justify-between">
-        <Button
-          variant="outline"
-          className="bg-[#f0f0f0] text-[#333] border-[#d0d0d0] hover:bg-[#e0e0e0] focus:ring-[#d0d0d0] shadow-md"
-        >
-          Cancel
-        </Button>
-        <Button className="bg-[#0070f3] text-white hover:bg-[#0060d3] focus:ring-[#0070f3] shadow-md">Done</Button>
       </div>
     </div>
   );

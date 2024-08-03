@@ -12,6 +12,8 @@
     "@chainflip/sdk": "^1.4.3",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@twa-dev/sdk": "^7.8.0",
+    "@twa-dev/types": "^7.8.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.424.0",
